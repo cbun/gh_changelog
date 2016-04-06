@@ -1,0 +1,5 @@
+organization: mygithuborganization
+repositories:
+  - repo_one
+  - repo_two
+github_api_token: 'GH_TOKEN'
