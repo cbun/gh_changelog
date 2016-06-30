@@ -8,6 +8,10 @@ You need to generate a Github token:
 
 https://github.com/settings/tokens
 
+### Install dependencies
+
+    pip install -r requirements.txt
+    
 ## Usage
 
     python generate.py --config MYCONFIG.yml BRANCH PRIOR_DATE_TO_COMPARE
