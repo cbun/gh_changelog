@@ -1,3 +1,4 @@
+import sys
 import markdown as md
 from github import Github
 
@@ -40,7 +41,7 @@ def commit_type(commit):
     }
     try:
         msg = commit.commit.message
-        tag = msg[msg.find("{")+1:msg.find("}")][0].lower()
+        tag_bracket = msg[msg.find("{")+1:msg.find("}")][0].lower()
         return tag_map.get(tag)
     except:
         print "Could not get commit type: {}".format(commit)
@@ -68,7 +69,7 @@ def parse_commits(commits_list, trello_links=None):
 def print_commits(commits_data):
     sections = [
         {'commit_type': 'FEATURE', 'section_title': 'New Features' },
-        {'commit_type': 'BUG', 'section_title': 'Bugfixes' },
+        {'commit_type': 'BUGFIX', 'section_title': 'Bugfixes' },
         {'commit_type': 'REFACTOR', 'section_title': 'Code Refactor' },
         {'commit_type': 'PRODUCTION', 'section_title': 'Production Support' },
         {'commit_type': 'UI', 'section_title': 'User Interface' },
@@ -87,6 +88,7 @@ def print_commits(commits_data):
                     msg += ' ' + md_link('[Trello]', commit['trello_url'])
                 msg += md.link(' [git-{}]'.format(commit['obj'].sha[:6]), commit['git_url'])
                 print msg
+            print '\n'
 
     for section in sections:
         section_commits = [commit for commit in commits_data
