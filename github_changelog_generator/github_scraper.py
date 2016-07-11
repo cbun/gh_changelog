@@ -41,10 +41,11 @@ def commit_type(commit):
     }
     try:
         msg = commit.commit.message
-        tag_bracket = msg[msg.find("{")+1:msg.find("}")][0].lower()
+        tag = msg[msg.find("{")+1:msg.find("}")][0].lower()
         return tag_map.get(tag)
-    except:
-        print "Could not get commit type: {}".format(commit)
+    except Exception as e:
+        print e
+        print "Could not get commit type: {}".format(commit.commit.message)
 
 def parse_commits(commits_list, trello_links=None):
 
