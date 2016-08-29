@@ -4,22 +4,36 @@ Goes through a list of repositories and prints a Markdown formatted changelog to
 
 ## Setup
 
+```
+git clone git@github.com:cbun/gh_changelog.git
+```
+
 You need to generate a Github token:
 
 https://github.com/settings/tokens
 
+### Create your configuration file
+
+```
+$ cd gh_changelog
+
+$ cp config/config.yml.template myconfig.yml
+
+$ vi myconfig.yml
+```
+
 ### Install dependencies
 
-    pip install -r requirements.txt
+    pip2.7 install -r requirements.txt
     
 ## Usage
 
-    python generate.py --config MYCONFIG.yml BRANCH PRIOR_DATE_TO_COMPARE
+    python2.7 generate.py --config MYCONFIG.yml BRANCH PRIOR_DATE_TO_COMPARE
     
 e.g 
 
-    python generate.py --config config.yml master 2016-02-05
+    python2.7 generate.py --config config.yml master 2016-02-05
     
 or to compare between dates
 
-    python generate.py --config config.yml master 2016-02-05 --latest-date 2016-03-05
+    python2.7 generate.py --config config.yml master 2016-02-05 --latest-date 2016-03-05

@@ -1,0 +1,4 @@
+markdown2
+pygithub
+pyyaml
+argparse
